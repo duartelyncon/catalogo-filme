@@ -9,7 +9,7 @@ class Movie extends Model
 {
     protected $fillable = ['title', 'synopsis', 'release_date', 'genre_id'];
 
-    public function genre{
+    public function genre(){
         return $this->belongsTo(Genre::class); //filme pertence a um genero (belongsTo = Pertence)
     }
 
