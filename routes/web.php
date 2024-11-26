@@ -5,6 +5,13 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ReviewController;
 
+
+// inicio
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 // Generos CRUD
 Route::get('genres', [GenreController::class, 'index'])->name('genres.index'); // lista genero
 Route::get('genres/create', [GenreController::class, 'create'])->name('genres.create'); // form criação

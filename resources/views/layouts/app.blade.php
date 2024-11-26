@@ -3,100 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel CRUD</title>
+    <title>@yield('title', 'Sistema de Filmes')</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
         }
 
-        body {
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
         }
 
         nav {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-        }
-
-        .nav-content {
+            background-color: #333;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
         }
 
-        .brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
+        nav a {
+            color: white;
+            padding: 14px 20px;
             text-decoration: none;
+            text-align: center;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
         }
 
-        .nav-links a {
-            color: #666;
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s ease;
+            text-align: center;
+            display: inline-block;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        .nav-links a:hover {
-            color: #333;
+        .button:hover {
+            background-color: #45a049;
         }
 
-        .content {
-            background-color: white;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
             border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        @media (max-width: 768px) {
-            .nav-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
+        .form-group {
+            margin-bottom: 15px;
         }
-    </style>
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        form {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+}
+
+        .input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 300px;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+}
+</style>
 </head>
 <body>
+    <header>
+        <h1>Sistema de Filmes</h1>
+    </header>
     <nav>
-        <div class="container">
-            <div class="nav-content">
-                <a href="{{ url('/') }}" class="brand">CRUD Laravel</a>
-                <ul class="nav-links">
-                    <li><a href="{{ route('genres.index') }}">Gêneros</a></li>
-                    <li><a href="{{ route('movies.index') }}">Filmes</a></li>
-                </ul>
-            </div>
-        </div>
+        <a href="/">Início</a>
+        <a href="/genres">Gêneros</a>
+        <a href="/movies">Filmes</a>
     </nav>
-
-    <div class="container">
-        <div class="content">
+    <main>
+        <div class="container">
             @yield('content')
         </div>
-    </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Sistema de Filmes. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

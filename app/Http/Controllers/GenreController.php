@@ -8,9 +8,12 @@ use App\Models\Genre;
 class GenreController extends Controller
 {
     // listar generos
-    public function index()
+    public function index(Request $request)
     {
-        $genres = Genre::all();
+        $genres = Genre::when($request->search, function ($query) use ($request) {
+            $query->where('name', 'like', "%{$request->search}%");
+        })->get();
+
         return view('genres.index', compact('genres'));
     }
 
